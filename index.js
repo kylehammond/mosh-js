@@ -54,7 +54,7 @@
 // console.log(x === 1); // true
 // console.log("1" === 1); // false (because types diff)
 
-// // loose (is it truthy?)
+// // loose
 // console.log(1 == 1); // true
 // console.log("1" == 1); // true
 // console.log(true == 1); // true
@@ -95,6 +95,33 @@
 // let applicationRefused = !eligibleForLoan;
 
 // console.log("Application Refused: " + applicationRefused); // true
+
+// logical operands with non-booleans
+console.log(false || true); // true
+console.log(false || "Kyle"); // Kyle
+console.log(false || 1); // 1
+
+// Falsy (false)
+// - undefined
+// - null
+// - 0
+// - false
+// - ''
+// - NaN   (not a number - not a valid number.. later in course)
+
+// Truthy (true) ->  anything that isn't falsy
+// if an operand is truthy, return THAT value, stop searching (short circuiting)
+
+// real world example
+let userColor = "red";
+let defaultColor = "blue";
+let currentColor = userColor || defaultColor;
+
+console.log(currentColor); // red
+
+userColor = undefined;
+currentColor = userColor || defaultColor;
+console.log(currentColor); // blue
 
 // Bitwise
 // ======================================================
