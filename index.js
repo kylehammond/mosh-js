@@ -97,9 +97,9 @@
 // console.log("Application Refused: " + applicationRefused); // true
 
 // logical operands with non-booleans
-console.log(false || true); // true
-console.log(false || "Kyle"); // Kyle
-console.log(false || 1); // 1
+// console.log(false || true); // true
+// console.log(false || "Kyle"); // Kyle
+// console.log(false || 1); // 1
 
 // Falsy (false)
 // - undefined
@@ -113,15 +113,41 @@ console.log(false || 1); // 1
 // if an operand is truthy, return THAT value, stop searching (short circuiting)
 
 // real world example
-let userColor = "red";
-let defaultColor = "blue";
-let currentColor = userColor || defaultColor;
+// let userColor = "red";
+// let defaultColor = "blue";
+// let currentColor = userColor || defaultColor;
 
-console.log(currentColor); // red
+// console.log(currentColor); // red
 
-userColor = undefined;
-currentColor = userColor || defaultColor;
-console.log(currentColor); // blue
+// userColor = undefined;
+// currentColor = userColor || defaultColor;
+// console.log(currentColor); // blue
 
 // Bitwise
 // ======================================================
+
+// essentially checking if bits match or not at each place of a byte
+
+// 1 decimal = 00000001 binary/byte (8 bits)
+// 2 decimal = 00000010 binary/byte (8 bits)
+// R1        = 00000011 = 3 decimal
+// R1        = 00000000 = 0 decimal
+
+console.log(1 | 2); // 3 - bitwise OR  - if either bit at this place is 1/true, return true at that bit place, otherwise false
+console.log(1 & 2); // 0 - bitwise AND - if both bits at this place are 1/true, return true, otherwise false
+
+// read, write, execute (permission)
+// 00000100 - read
+// 00000110 - read/write
+// 00000111 - read/write/execute
+
+const readPermission = 4;
+const writePermission = 2;
+const executePermission = 1;
+
+let myPermission = 0;
+myPermission = myPermission | readPermission | writePermission; // adding
+console.log("My permission (decimal): " + myPermission);
+
+let message = myPermission & readPermission ? "yes" : "no"; // checking/comparing
+console.log(message); // yes (given with bitwise OR)
