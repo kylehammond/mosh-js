@@ -1,24 +1,10 @@
-// reference types
-// Object (object literal)
-let person = {
-    firstName: 'Kyle',
-    age: 35
-}
+// Arrays
+// Arrays have a dynamic LENGTH and dynamic TYPES
+let selectedColors = ['red','blue'];
+selectedColors[2] = 'green';
+selectedColors[3] = 1;
 
-console.log(person);
+console.log(selectedColors);
+console.log(selectedColors[0]);
 
-// Dot Notation
-person.age = 40
-console.log("Age: " + person.age);
-
-// Bracket Notation
-person['name'] = 'Mary';
-console.log("Name: " + person.name);
-
-// Dynamic Bracket
-let selection = 'age';
-console.log("Selection: " + person[selection]);
-
-
-// Array (later...)
-// Function (later...)
+// console.log(selectedColors.map(color => "item name: " + color)); 
