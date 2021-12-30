@@ -36,17 +36,28 @@
 
 // Comparison
 // ======================================================
-let x = 1;
+// let x = 1;
 
-// - relational operators
-console.log(x > 0);
-console.log(x >= 1);
-console.log(x < 1);
-console.log(x <= 1);
+// // - relational operators
+// console.log(x > 0);
+// console.log(x >= 1);
+// console.log(x < 1);
+// console.log(x <= 1);
 
-// - equality operators
-console.log(x === 1);
-console.log(x !== 1);
+// // - equality operators
+// console.log(x === 1); // strict
+// console.log(x !== 1); // strict
+// console.log(1 == 1); // loose
+// console.log(1 != 1); // loose
+
+// // strict (use most of the time)
+// console.log(x === 1); // true
+// console.log("1" === 1); // false (because types diff)
+
+// // loose (is it truthy?)
+// console.log(1 == 1); // true
+// console.log("1" == 1); // true
+// console.log(true == 1); // true
 
 // Logical
 // ======================================================
