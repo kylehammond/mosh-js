@@ -1,27 +1,24 @@
-// primitives / value types
-
-// string (string literal)
-let name = 'Kyle';
-
-// number (number literal)
-let age = 35;
-
-// boolean (boolean literal)
-let isApproved = true;
-
-// undefined
-let undefinedVariable;
-let anotherUndefinedVariable = undefined;
-
-// null
-let aNullVariable = null;
-
-
-// variables in JS are dynamic
-
-
 // reference types
-// later in course...
+// Object (object literal)
+let person = {
+    firstName: 'Kyle',
+    age: 35
+}
 
-// symbol
-// later in course...
+console.log(person);
+
+// Dot Notation
+person.age = 40
+console.log("Age: " + person.age);
+
+// Bracket Notation
+person['name'] = 'Mary';
+console.log("Name: " + person.name);
+
+// Dynamic Bracket
+let selection = 'age';
+console.log("Selection: " + person[selection]);
+
+
+// Array (later...)
+// Function (later...)
