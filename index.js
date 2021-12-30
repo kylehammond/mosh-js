@@ -1,25 +1,30 @@
-// Functions
+// Operators
 
-// function greet() {
-//     // body
-//     console.log('Hello World');
-// }
+// Arithmetic
+let x = 10;
+let y = 3;
 
-// greet();
+console.log(x + y); // log an expression (something that produces a value)
+console.log(x - y);
+console.log(x * y);
+console.log(x / y);
+console.log(x % y);
+console.log(x ** y); // exponent, somewhat new?
 
-//performing a task
-function greet(firstName, lastName) {
-  // body
-  console.log("Hello " + firstName + " " + lastName);
-}
+console.log(++x); // increment before logging
 
-greet(); // undefined
-greet("John", "Babbon");
-greet("Mary", "Gunderfiend");
+console.log(x++); // increment after logging
+console.log(x); // increment after logging
 
-// calculating a value
-function square(number) {
-  return number * number;
-}
+console.log(--y); // decrement before logging
 
-console.log(square(2));
+console.log(y--); // decrement after logging
+console.log(y); // decrement after logging
+
+// Assignment
+
+// Comparison
+
+// Logical
+
+// Bitwise
