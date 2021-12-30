@@ -24,18 +24,29 @@
 
 // Assignment
 // ======================================================
-let x = 10;
+// let x = 10;
 
-// both same
-x = x + 5;
-x += 5;
+// // both same
+// x = x + 5;
+// x += 5;
 
-// both same
-x = x * 3;
-x *= 3;
+// // both same
+// x = x * 3;
+// x *= 3;
 
 // Comparison
 // ======================================================
+let x = 1;
+
+// - relational operators
+console.log(x > 0);
+console.log(x >= 1);
+console.log(x < 1);
+console.log(x <= 1);
+
+// - equality operators
+console.log(x === 1);
+console.log(x !== 1);
 
 // Logical
 // ======================================================
