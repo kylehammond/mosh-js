@@ -1,11 +1,15 @@
-let a = "red";
-let b = "blue";
-let c = undefined;
+// if else
 
-//swap red/blue to blue/red in console
-c = b;
-b = a;
-a = c;
+// if hour is between 6am and 12pm:  Good morning!
+// if hour is between 12pm and 6pm:  Good afternoon!
+// otherwise:  Good evening!
 
-console.log(a);
-console.log(b);
+let hour = 24;
+
+if (hour >= 6 && hour < 12) {
+  console.log("Good morning!");
+} else if (hour >= 12 && hour < 18) {
+  console.log("Good afternoon");
+} else {
+  console.log("Good evening!");
+}
