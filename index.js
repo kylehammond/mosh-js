@@ -17,6 +17,8 @@ let anotherUndefinedVariable = undefined;
 let aNullVariable = null;
 
 
+// variables in JS are dynamic
+
 
 // reference types
 // later in course...
