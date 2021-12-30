@@ -126,28 +126,35 @@
 // Bitwise
 // ======================================================
 
-// essentially checking if bits match or not at each place of a byte
+// // essentially checking if bits match or not at each place of a byte
 
-// 1 decimal = 00000001 binary/byte (8 bits)
-// 2 decimal = 00000010 binary/byte (8 bits)
-// R1        = 00000011 = 3 decimal
-// R1        = 00000000 = 0 decimal
+// // 1 decimal = 00000001 binary/byte (8 bits)
+// // 2 decimal = 00000010 binary/byte (8 bits)
+// // R1        = 00000011 = 3 decimal
+// // R1        = 00000000 = 0 decimal
 
-console.log(1 | 2); // 3 - bitwise OR  - if either bit at this place is 1/true, return true at that bit place, otherwise false
-console.log(1 & 2); // 0 - bitwise AND - if both bits at this place are 1/true, return true, otherwise false
+// console.log(1 | 2); // 3 - bitwise OR  - if either bit at this place is 1/true, return true at that bit place, otherwise false
+// console.log(1 & 2); // 0 - bitwise AND - if both bits at this place are 1/true, return true, otherwise false
 
-// read, write, execute (permission)
-// 00000100 - read
-// 00000110 - read/write
-// 00000111 - read/write/execute
+// // read, write, execute (permission)
+// // 00000100 - read
+// // 00000110 - read/write
+// // 00000111 - read/write/execute
 
-const readPermission = 4;
-const writePermission = 2;
-const executePermission = 1;
+// const readPermission = 4;
+// const writePermission = 2;
+// const executePermission = 1;
 
-let myPermission = 0;
-myPermission = myPermission | readPermission | writePermission; // adding
-console.log("My permission (decimal): " + myPermission);
+// let myPermission = 0;
+// myPermission = myPermission | readPermission | writePermission; // adding
+// console.log("My permission (decimal): " + myPermission);
 
-let message = myPermission & readPermission ? "yes" : "no"; // checking/comparing
-console.log(message); // yes (given with bitwise OR)
+// let message = myPermission & readPermission ? "yes" : "no"; // checking/comparing
+// console.log(message); // yes (given with bitwise OR)
+
+// Operators precedence
+let x = 2 + 3 * 4;
+console.log(x); // 14
+
+let y = (2 + 3) * 4;
+console.log(y); // 20
