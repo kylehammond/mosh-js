@@ -1,10 +1,25 @@
-// Arrays
-// Arrays have a dynamic LENGTH and dynamic TYPES
-let selectedColors = ['red','blue'];
-selectedColors[2] = 'green';
-selectedColors[3] = 1;
+// Functions
 
-console.log(selectedColors);
-console.log(selectedColors[0]);
+// function greet() {
+//     // body
+//     console.log('Hello World');
+// }
 
-// console.log(selectedColors.map(color => "item name: " + color)); 
+// greet();
+
+//performing a task
+function greet(firstName, lastName) {
+  // body
+  console.log("Hello " + firstName + " " + lastName);
+}
+
+greet(); // undefined
+greet("John", "Babbon");
+greet("Mary", "Gunderfiend");
+
+// calculating a value
+function square(number) {
+  return number * number;
+}
+
+console.log(square(2));
