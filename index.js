@@ -62,15 +62,39 @@
 // Ternary
 // ======================================================
 
-// if a customer has more than 100 poitns,
-// gold customer
-// else, silver customer
-let points = 110;
-let type = points > 100 ? "gold" : "silver";
-console.log(type);
+// // if a customer has more than 100 poitns,
+// // gold customer
+// // else, silver customer
+// let points = 110;
+// let type = points > 100 ? "gold" : "silver";
+// console.log(type);
 
 // Logical
 // ======================================================
+
+// // logical AND  - true if both operands true
+// console.log(true && true); // true
+
+// let highIncome = true;
+// let goodCreditScore = true;
+// let eligibleForLoan = highIncome && goodCreditScore;
+// console.log(eligibleForLoan); // true
+
+// // logical OR - true if either operands true
+// console.log(true || false); // true
+
+// let highIncome = true;
+// let goodCreditScore = false;
+// let eligibleForLoan = highIncome || goodCreditScore;
+// console.log(eligibleForLoan); // true
+
+// not operator
+// let highIncome = false;
+// let goodCreditScore = false;
+// let eligibleForLoan = highIncome || goodCreditScore;
+// let applicationRefused = !eligibleForLoan;
+
+// console.log("Application Refused: " + applicationRefused); // true
 
 // Bitwise
 // ======================================================
