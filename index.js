@@ -1,10 +1,25 @@
-// let interestRate = 0.3;
-// interestRate = 1;
-// console.log(interestRate);
+// primitives / value types
 
-const interestRate = 0.3;
-interestRate = 1; //will throw TypeError: Assignment to constant variable 
-console.log(interestRate);
+// string (string literal)
+let name = 'Kyle';
+
+// number (number literal)
+let age = 35;
+
+// boolean (boolean literal)
+let isApproved = true;
+
+// undefined
+let undefinedVariable;
+let anotherUndefinedVariable = undefined;
+
+// null
+let aNullVariable = null;
 
 
-// const is default until you need to reassign
+
+// reference types
+// later in course...
+
+// symbol
+// later in course...
