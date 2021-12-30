@@ -59,6 +59,16 @@
 // console.log("1" == 1); // true
 // console.log(true == 1); // true
 
+// Ternary
+// ======================================================
+
+// if a customer has more than 100 poitns,
+// gold customer
+// else, silver customer
+let points = 110;
+let type = points > 100 ? "gold" : "silver";
+console.log(type);
+
 // Logical
 // ======================================================
 
