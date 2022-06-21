@@ -1,25 +1,13 @@
 // objects / OOP
 
-// factory function
-function createCircle(radius) {
-  return {
-    radius,
-    draw() {
-      console.log("draw");
-    },
-  };
-}
+const circle = {
+  radius: 1,
+};
 
-const factoryCircle = createCircle(1);
-factoryCircle.draw();
+circle.color = "yellow"; // dynamically add properties
+circle.draw = function () {}; // dynamically add functions
 
-// constructor function
-function Circle(radius) {
-  this.radius = radius;
-  this.draw = function () {
-    console.log("draw");
-  };
-}
+delete circle.color; //dynamically remove properties
+delete circle.draw; //dynamically remove functions
 
-const circle = new Circle(1);
-circle.draw();
+console.log(circle);
