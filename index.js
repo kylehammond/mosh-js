@@ -13,24 +13,28 @@
 // const factoryCircle = createCircle(1);
 // factoryCircle.draw();
 
-// // constructor function
-// function Circle(radius) {
-//   this.radius = radius;
-//   this.draw = function () {
-//     console.log("draw");
-//   };
-// }
+// constructor function
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
+}
 
-// const constructedCircle = new Circle(1);
-// constructedCircle.draw();
+// equivalent?
+// const Circle1 = new Function(
+//   "radius",
+//   `
+//     this.radius = radius;
+//     this.draw = function () {
+//         console.log("draw");
+//     };
+// `
+// );
 
-// built in object constructor function
+// const circle = new Circle1(1);
 
-let x = {};
-// let x = new Object();
+Circle.call({}, 1); // like a constructor
+Circle.apply({}, [1, 2, 3]); // apply changes to an array
 
-new String(); // '', "", ``
-new Boolean(); // true, false
-new Number(); // 1, 2, 3
-
-// every object has a constructor property referencing the object used to create that function
+const another = new Circle(1);
