@@ -1,5 +1,6 @@
 // objects / OOP
 
+// factory function
 function createCircle(radius) {
   return {
     radius,
@@ -9,8 +10,16 @@ function createCircle(radius) {
   };
 }
 
-const circle1 = createCircle(1);
-console.log(circle1);
+const factoryCircle = createCircle(1);
+factoryCircle.draw();
 
-const circle2 = createCircle(2);
-console.log(circle2);
+// constructor function
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
+}
+
+const circle = new Circle(1);
+circle.draw();
