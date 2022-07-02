@@ -5,24 +5,25 @@ const circle = {
   }
 };
 
-for (let key in circle) {// for in
-  // console.log(key); //radius, draw
-  console.log(key, circle[key]) // radius 1, draw > function draw () length :0 ... 
-}
+// const another = {};
 
-for (let key of circle) {//for of
-  console.log(key); //type error circle is not iterable 
-}
+// for (let key in circle){
+//   another[key] = circle[key];  // another['radius'] = circle['radius']; and so on
+// }
+
+// console.log(another); // radius: 1, draw: draw()...
 
 
-// you CAN iterate the keys of circle with for of with Object.keys(circle)
-for (let key of Object.keys(circle)) {//for of
-  console.log(key); // radius, draw  
-}
 
-for (let entry of Object.entries(circle)) {//for of
-  console.log(entry); //Array["radius",1], Array["draw",draw()..]
-}
+// const another = Object.assign({},circle);
+// console.log(another); // radius: 1, draw: draw()...
 
-if ('radius' in circle) console.log('yes'); // yes
-if ('color' in circle) console.log('yes'); // no
+
+
+// const another = Object.assign({
+//   color:'yellow'
+// },circle);
+// console.log(another); // color: "yellow", radius: 1, draw: draw()...
+
+const another = { ...circle}; //spread operator 
+console.log(another); // radius: 1, draw: draw()...
