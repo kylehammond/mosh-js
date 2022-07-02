@@ -1,60 +1,48 @@
-// new function called move that moves an item at a given index a given number of items away
-// if the offset amount takes them item outside the bounds of the array, throw error - invalid offset
-const numbers = [1, 2, 3, 4];
+// make function countOccurrences(numbers,1) and count how many times that value exists
+// first without reduce
+// then with reduce
 
-// my solution
-// function move(array, index, offset) {
-//   let newArray = [...array];
+const numbers = [1, 2, 3, 4, 1, 8, 2, 0, -4];
 
-//   if (index + offset > newArray.length || index + offset < 0) {
-//     console.error("Invalid offset.");
-//   } else {
-//     let valueToMove = newArray[index];
-//     let newIndex = index + offset;
-
-//     if (offset >= 0) {
-//       newArray.splice(newIndex, 0, valueToMove);
-//       newArray.splice(index, 1);
-//     } else {
-//       newArray.splice(index, 1);
-//       newArray.splice(newIndex, 0, valueToMove);
-//     }
-//     return newArray;
+// my solution without reduce
+// function countOccurences(array, searchElement) {
+//   let count = 0;
+//   for (let element of array) {
+//     if (element === searchElement) count++;
 //   }
+//   return count;
 // }
 
-// let output = [];
-// output = move(numbers, 0, 1);
-// console.log(output);
-// output = move(numbers, 0, 4);
-// console.log(output);
-// output = move(numbers, 1, -1);
-// console.log(output);
-// output = move(numbers, 1, -2);
-// console.log(output);
+// my solution with reduce
+// function countOccurences(array, searchElement) {
+//   const count = array.reduce((previousValue, currentValue) => {
+//     if (currentValue === searchElement) previousValue++;
+//     return previousValue;
+//   }, 0);
+//   return count;
+// }
 
-// his solution
-function move(array, index, offset) {
-  const position = index + offset;
-  if (position > array.length || position < 0) {
-    console.error("Invalid offset.");
-    return;
-  }
+// let count = [];
+// count = countOccurences(numbers, 1);
+// console.log(count);
+// count = countOccurences(numbers, -1);
+// console.log(count);
+// count = countOccurences(numbers, -4);
+// console.log(count);
 
-  let output = [...array];
+// his solution without reduce
+// same
 
-  const element = output.splice(index, 1)[0]; // returns just deleted element
-  output.splice(position, 0, element);
+// his solution with reduce
+// function countOccurences(array, searchElement) {
+//   return array.reduce((accumulator, current) => {
+//     const occurence = current === searchElement ? 1 : 0;
+//     return accumulator + occurence;
+//   }, 0);
+// }
 
-  return output;
-}
-
-let output = [];
-output = move(numbers, 0, 1);
-console.log(output);
-output = move(numbers, 0, 4);
-console.log(output);
-output = move(numbers, 1, -1);
-console.log(output);
-output = move(numbers, 1, -2);
-console.log(output);
+// let count = [];
+// count = countOccurences(numbers, 1);
+// console.log(count);
+// count = countOccurences(numbers, -1);
+// console.log(count);
