@@ -1,36 +1,87 @@
-// compare two objects for equality
-
-function Address(street, city, state, zipCode){
-  this.street = street;
-  this.city = city;
-  this.state = state;
-  this.zipCode = zipCode;
-}
-
-let address1 = new Address('a','b','c','d');
-let address2 = new Address('a','b','c','d');
-
-//write an equality operator for values AND reference of the object
+// create a blog post object with these props:  
+//title, body, author, views (times viewed), comments (each has author, body), isLive (booL)
+// use obj literal syntax to create an init
 
 // my solution
-function areEqual(address1,address2){
-  // values are the same
-  return (
-    address1.street === address2.street &&
-    address1.city === address2.city &&
-    address1.state === address2.state &&
-    address1.zipCode === address2.zipCode 
-  );
-}
+let blogPost1 = {
+  title: "Banana fight",
+  body: "Some people don't understand the value of a neat banana aisle in the grocers.",
+  author: "Hip guy",
+  views: 488424,
+  comments: [{
+    author: "Sheila",
+    body: "Calm down"
+  },
+  {
+    author: "Bob",
+    body: "LOL"
+  },
+  {
+    author: "Jimothy",
+    body: "I'm not a bot"
+  } ],
+  isLive: true
+};
 
-function areSame(address1,address2){
-  // are pointing to same reference/object
-  return (address1 === address2);
-}
+let blogPost2 = {
+  title: "Karate",
+  body: "Today I took a step at protecting myself and have signed up for karate.",
+  author: "Hip guy",
+  views: 4542,
+  comments: [{
+    author: "Bob",
+    body: "You'll be a black belt in no time!"
+  },
+  {
+    author: "Sheila",
+    body: "You need to spend more time at home with me."
+  },
+  {
+    author: "Jimothy",
+    body: "I'm not a bot"
+  } ],
+  isLive: true
+};
 
-console.log(areEqual(address1, address2));
-console.log(areSame(address1, address2));
+let blogPost3 = {
+  title: "It happened again!",
+  body: "I was out shopping for gourmet bananas and I got into my third fight of the week.",
+  author: "Hip guy",
+  views: 488424,
+  comments: [{
+    author: "Bob",
+    body: "You have it EXACTLY right!  People like that NEED to be taught manners!"
+  },
+  {
+    author: "Sheila",
+    body: "You have it so wrong!  Someone needs to think of the bananas.. SMH"
+  },
+  {
+    author: "Jimothy",
+    body: "I'm not a bot"
+  } ],
+  isLive: true
+};
+
+console.log(blogPost1);
+console.log(blogPost2);
+console.log(blogPost3);
 
 // his solution
+let post = {
+  title: 'a',
+  body: 'b',
+  author: 'c',
+  views: 10,
+  comments: [{
+    author: 'a',
+    body: 'b'
+  },
+  {
+    author: 'a',
+    body: 'b'
+  }],
+  isLive: true
+};
 
-// same!!
+console.log(post);
