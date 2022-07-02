@@ -1,25 +1,60 @@
-// new function 'except' returns a new array without the values provided
+// new function called move that moves an item at a given index a given number of items away
+// if the offset amount takes them item outside the bounds of the array, throw error - invalid offset
 const numbers = [1, 2, 3, 4];
 
 // my solution
-function except(numbers, excluded) {
-  let newNumbers = [];
-  for (const num of numbers) if (!excluded.includes(num)) newNumbers.push(num);
-  return newNumbers;
-}
+// function move(array, index, offset) {
+//   let newArray = [...array];
 
-output = except(numbers, [1, 2]); // should be 3, 4
-console.log(output);
+//   if (index + offset > newArray.length || index + offset < 0) {
+//     console.error("Invalid offset.");
+//   } else {
+//     let valueToMove = newArray[index];
+//     let newIndex = index + offset;
+
+//     if (offset >= 0) {
+//       newArray.splice(newIndex, 0, valueToMove);
+//       newArray.splice(index, 1);
+//     } else {
+//       newArray.splice(index, 1);
+//       newArray.splice(newIndex, 0, valueToMove);
+//     }
+//     return newArray;
+//   }
+// }
+
+// let output = [];
+// output = move(numbers, 0, 1);
+// console.log(output);
+// output = move(numbers, 0, 4);
+// console.log(output);
+// output = move(numbers, 1, -1);
+// console.log(output);
+// output = move(numbers, 1, -2);
+// console.log(output);
 
 // his solution
+function move(array, index, offset) {
+  const position = index + offset;
+  if (position > array.length || position < 0) {
+    console.error("Invalid offset.");
+    return;
+  }
 
-// basically same
-function except2(array, excluded) {
-  const output = [];
-  for (let element of array)
-    if (!excluded.includes(element)) output.push(element);
+  let output = [...array];
+
+  const element = output.splice(index, 1)[0]; // returns just deleted element
+  output.splice(position, 0, element);
+
   return output;
 }
 
-output = except2(numbers, [1, 2]); // should be 3, 4
+let output = [];
+output = move(numbers, 0, 1);
+console.log(output);
+output = move(numbers, 0, 4);
+console.log(output);
+output = move(numbers, 1, -1);
+console.log(output);
+output = move(numbers, 1, -2);
 console.log(output);
