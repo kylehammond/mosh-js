@@ -1,24 +1,13 @@
 const numbers = [1, 2, 3];
 
-for (let number of numbers) console.log(number);
-//1
-//2
-//3
+const joined = numbers.join(",");
+console.log(joined); //1,2,3
 
-numbers.forEach(function (number) {
-  console.log(number);
-});
-//1
-//2
-//3
+const message = "this is my first message";
+const messageParts = message.split(" ");
+console.log(messageParts); // array of these words
 
-numbers.forEach((number) => console.log(number));
-//1
-//2
-//3
+const combinedMessage = messageParts.join("-");
+console.log(combinedMessage); // this-is-my-first-message  (useful for url slugs)
 
-// foreach allows index
-numbers.forEach((number, index) => console.log(number, index));
-//1 0
-//2 1
-//3 2
+console.log(joined.split(",")); // array of "1", "2", "3"
