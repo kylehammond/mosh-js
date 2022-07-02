@@ -1,10 +1,24 @@
-const first = [1, 2, 3];
-const second = [4, 5, 6];
+const numbers = [1, 2, 3];
 
-//const combined = first.concat(second);
-const combined = [...first, "a", ...second, "b"];
-console.log(combined); //1,2,3,'a',4,5,6,'b'
+for (let number of numbers) console.log(number);
+//1
+//2
+//3
 
-// const copy = combined.slice();
-const copy = [...combined]; // same
-console.log(copy); //1,2,3,'a',4,5,6,'b'
+numbers.forEach(function (number) {
+  console.log(number);
+});
+//1
+//2
+//3
+
+numbers.forEach((number) => console.log(number));
+//1
+//2
+//3
+
+// foreach allows index
+numbers.forEach((number, index) => console.log(number, index));
+//1 0
+//2 1
+//3 2
