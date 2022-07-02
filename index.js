@@ -1,87 +1,27 @@
-// create a blog post object with these props:  
-//title, body, author, views (times viewed), comments (each has author, body), isLive (booL)
-// use obj literal syntax to create an init
+// use a constructor function
+// imagine building blogging engine - user drafting post but has not published yet
+// what should constructor look like?
 
 // my solution
-let blogPost1 = {
-  title: "Banana fight",
-  body: "Some people don't understand the value of a neat banana aisle in the grocers.",
-  author: "Hip guy",
-  views: 488424,
-  comments: [{
-    author: "Sheila",
-    body: "Calm down"
-  },
-  {
-    author: "Bob",
-    body: "LOL"
-  },
-  {
-    author: "Jimothy",
-    body: "I'm not a bot"
-  } ],
-  isLive: true
-};
+function DraftPost(title, body, author){
+  this.title = title;
+  this.body = body;
+  this.author = author;
+  this.isLive = false;
+}
 
-let blogPost2 = {
-  title: "Karate",
-  body: "Today I took a step at protecting myself and have signed up for karate.",
-  author: "Hip guy",
-  views: 4542,
-  comments: [{
-    author: "Bob",
-    body: "You'll be a black belt in no time!"
-  },
-  {
-    author: "Sheila",
-    body: "You need to spend more time at home with me."
-  },
-  {
-    author: "Jimothy",
-    body: "I'm not a bot"
-  } ],
-  isLive: true
-};
-
-let blogPost3 = {
-  title: "It happened again!",
-  body: "I was out shopping for gourmet bananas and I got into my third fight of the week.",
-  author: "Hip guy",
-  views: 488424,
-  comments: [{
-    author: "Bob",
-    body: "You have it EXACTLY right!  People like that NEED to be taught manners!"
-  },
-  {
-    author: "Sheila",
-    body: "You have it so wrong!  Someone needs to think of the bananas.. SMH"
-  },
-  {
-    author: "Jimothy",
-    body: "I'm not a bot"
-  } ],
-  isLive: true
-};
-
-console.log(blogPost1);
-console.log(blogPost2);
-console.log(blogPost3);
+const draftPost = new DraftPost('My post title', 'The body of the post being drafted','Kyle');
+console.log(draftPost);
 
 // his solution
-let post = {
-  title: 'a',
-  body: 'b',
-  author: 'c',
-  views: 10,
-  comments: [{
-    author: 'a',
-    body: 'b'
-  },
-  {
-    author: 'a',
-    body: 'b'
-  }],
-  isLive: true
-};
+function Post(title, body, author){
+  this.title = title;
+  this.body = body;
+  this.author = author;
+  this.views = 0;
+  this.comments = [];
+  this.isLive = false;
+}
 
+let post = new Post('a','b','c');
 console.log(post);
