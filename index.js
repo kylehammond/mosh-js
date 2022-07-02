@@ -1,25 +1,28 @@
-const numbers = [1, 2, -1, 3];
+// write function arrayFromRange with min, max
+// should return array of numbers asc in sort from min to max
 
-// let sum = 0;
-// for (let n of numbers) sum += n;
+// my solution
+function arrayFromRange(min, max) {
+  let numbers = [];
+  for (let i = min; i <= max; i++) {
+    numbers.push(i);
+  }
+  return numbers;
+}
 
-// console.log(sum);
+let numbers = arrayFromRange(1, 4);
+console.log(numbers);
+numbers = arrayFromRange(-10, -4);
+console.log(numbers);
 
-// for each item in the array, do the callback function
-// let sum = numbers.reduce(
-//   (accumulator, currentValue) => accumulator + currentValue,
-//   0 //init value
-// );
-// // accumulator = 0, currentValue = 1 => a = 1
-// // a = 1, c = -1 => a = 0
-// // a = 0, c = 2 => a = 2
-// // a = 2, c = 3 => a = 5
+// his solution
+function arrayFromRange2(min, max) {
+  const output = [];
+  for (let i = min; i <= max; i++) {
+    output.push(i);
+  }
+  return output;
+}
 
-// for each item in the array, do the callback function
-const sum = numbers.reduce(
-  (accumulator, currentValue) => accumulator + currentValue
-);
-// a = 1, c = -1 => a = 0
-// a = 0, c = 2 => a = 2
-// a = 2, c = 3 => a = 5
-console.log(sum);
+const numbers2 = arrayFromRange2(1, 4);
+console.log(numbers2);
