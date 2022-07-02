@@ -1,36 +1,28 @@
-// let x = 10;
-// let y = x; // COPY (value type)
+const circle = {
+  radius: 1,
+  draw() {
+    console.log('draw');
+  }
+};
 
-// x = 20;
-
-// // x: 20
-// // y: 10
-
-
-// let x = { value: 10 };
-// let y = x;  // copy REFERENCE (reference type)
-
-// x.value = 20;
-
-// // x: 20
-// // y: 20 < because it holds ref to x
-
-
-let number = 10;
-
-function increase(number) {
-  number++;
+for (let key in circle) {// for in
+  // console.log(key); //radius, draw
+  console.log(key, circle[key]) // radius 1, draw > function draw () length :0 ... 
 }
 
-increase(number);
-console.log(number);  // 10 - because it was just a copy
-
-
-let obj = { value: 10 };
-function increase(obj) {
-  obj.value++;
+for (let key of circle) {//for of
+  console.log(key); //type error circle is not iterable 
 }
 
-increase(obj);
-console.log(obj); // 11 - because its reference was passed in
 
+// you CAN iterate the keys of circle with for of with Object.keys(circle)
+for (let key of Object.keys(circle)) {//for of
+  console.log(key); // radius, draw  
+}
+
+for (let entry of Object.entries(circle)) {//for of
+  console.log(entry); //Array["radius",1], Array["draw",draw()..]
+}
+
+if ('radius' in circle) console.log('yes'); // yes
+if ('color' in circle) console.log('yes'); // no
