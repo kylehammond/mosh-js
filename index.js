@@ -1,60 +1,36 @@
-// let address = {
-//   street: '123 Sesame Street',
-//   city: 'Bumfeck',
-//   state: 'WY',
-//   zipCode: '54321'
-// }
+// compare two objects for equality
 
-// initialize an address object using a factory function and then using a constructor function
+function Address(street, city, state, zipCode){
+  this.street = street;
+  this.city = city;
+  this.state = state;
+  this.zipCode = zipCode;
+}
+
+let address1 = new Address('a','b','c','d');
+let address2 = new Address('a','b','c','d');
+
+//write an equality operator for values AND reference of the object
 
 // my solution
-
-// factory
-function createAddress(street, city, state, zipCode){
-  return {
-    address: {
-      street,
-      city,
-      state,
-      zipCode
-    }
-  }
+function areEqual(address1,address2){
+  // values are the same
+  return (
+    address1.street === address2.street &&
+    address1.city === address2.city &&
+    address1.state === address2.state &&
+    address1.zipCode === address2.zipCode 
+  );
 }
 
-const factoryAddress = createAddress('123 Sesame Street','Bumfeck','WY','54321');
-console.log(factoryAddress);
-
-// constructor
-function Address(street, city, state, zipCode){
-  this.street = street;
-  this.city = city;
-  this.state = state;
-  this.zipCode = zipCode;
+function areSame(address1,address2){
+  // are pointing to same reference/object
+  return (address1 === address2);
 }
 
-const constructedAddress = new Address('123 Sesame Street','Bumfeck','WY','54321');
-console.log(constructedAddress);
+console.log(areEqual(address1, address2));
+console.log(areSame(address1, address2));
 
-// factory
-function createAddress(street, city, state, zipCode){
-  return {
-    street,
-    city,
-    state,
-    zipCode
-  }
-}
+// his solution
 
-const factoryAddress = createAddress('123 Sesame Street','Bumfeck','WY','54321');
-console.log(factoryAddress);
-
-// constructor
-function Address(street, city, state, zipCode){
-  this.street = street;
-  this.city = city;
-  this.state = state;
-  this.zipCode = zipCode;
-}
-
-const constructedAddress = new Address('123 Sesame Street','Bumfeck','WY','54321');
-console.log(constructedAddress);
+// same!!
