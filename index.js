@@ -1,40 +1,36 @@
-// objects / OOP
+// let x = 10;
+// let y = x; // COPY (value type)
 
-// // factory function
-// function createCircle(radius) {
-//   return {
-//     radius,
-//     draw() {
-//       console.log("draw");
-//     },
-//   };
-// }
+// x = 20;
 
-// const factoryCircle = createCircle(1);
-// factoryCircle.draw();
+// // x: 20
+// // y: 10
 
-// constructor function
-function Circle(radius) {
-  this.radius = radius;
-  this.draw = function () {
-    console.log("draw");
-  };
+
+// let x = { value: 10 };
+// let y = x;  // copy REFERENCE (reference type)
+
+// x.value = 20;
+
+// // x: 20
+// // y: 20 < because it holds ref to x
+
+
+let number = 10;
+
+function increase(number) {
+  number++;
 }
 
-// equivalent?
-// const Circle1 = new Function(
-//   "radius",
-//   `
-//     this.radius = radius;
-//     this.draw = function () {
-//         console.log("draw");
-//     };
-// `
-// );
+increase(number);
+console.log(number);  // 10 - because it was just a copy
 
-// const circle = new Circle1(1);
 
-Circle.call({}, 1); // like a constructor
-Circle.apply({}, [1, 2, 3]); // apply changes to an array
+let obj = { value: 10 };
+function increase(obj) {
+  obj.value++;
+}
 
-const another = new Circle(1);
+increase(obj);
+console.log(obj); // 11 - because its reference was passed in
+
