@@ -1,29 +1,28 @@
-// solution 1
-let numbers1 = [1, 2, 3, 4];
-let another = numbers1;
+const first = [1, 2, 3];
+const second = [4, 5, 6];
 
-numbers1 = []; // would be GC'd normally but not if another ref to it
+const combined = first.concat(second);
+console.log(combined); //1,2,3,4,5,6
+console.log(first); //1,2,3
+console.log(second); //4,5,6
 
-console.log(numbers1); // empty array
-console.log(another); // still points to original reference - 1,2,3,4
+const slice = combined.slice(2, 4); // returns portion
+console.log(combined); //1,2,3,4,5,6 - does not affect original
+console.log(slice); //3,4
 
-// solution 2
-let numbers2 = [1, 2, 3, 4];
+console.log(combined.slice(2)); //3,4,5,6
+console.log(combined.slice()); //1,2,3,4,5,6
 
-numbers2.length = 0; // preferred
+// primatives will be copied into arrays
+// ref types will be pointing to originals
 
-console.log(numbers2); // empty array
+const firstO = [{ id: 1 }];
+const secondO = [4, 5, 6];
 
-// solution 3
-let numbers3 = [1, 2, 3, 4];
+const combinedO = firstO.concat(secondO);
+firstO[0].id = 10; // if you change here, you also changed it in combinedO
 
-numbers3.splice(0, numbers3.length);
+const sliceO = combinedO.slice();
 
-console.log(numbers3); // empty array
-
-// solution 4
-let numbers4 = [1, 2, 3, 4];
-
-while (numbers4.length > 0) numbers4.pop(); // not recommended - bad perf
-
-console.log(numbers4); // empty array
+console.log(combinedO);
+console.log(sliceO);
