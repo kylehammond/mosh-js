@@ -1,13 +1,34 @@
-const numbers = [1,2,3,1,4];
+const courses = [
+  { id: 1, name: "a" },
+  { id: 2, name: "b" },
+];
 
-console.log(numbers.indexOf('a')); //-1
-console.log(numbers.indexOf(1)); //0
-console.log(numbers.indexOf('1')); //-1
-console.log(numbers.indexOf(5)); //-1
+console.log(courses.includes({ id: 1, name: "a" })); // false - b/c ref is not same
 
-console.log(numbers.lastIndexOf(1)); //3 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+console.log(courses.find((c) => c.id === 1)); // returns the object with id of 1
 
-console.log(numbers.indexOf(1) !== -1); //true
-console.log(numbers.includes(1)) // true
+// function(course) is callback function
+console.log(
+  courses.find(function (course) {
+    return course.name === "a";
+  })
+); // returns the object
 
-console.log(numbers.indexOf(1, 2)); //3 - because we don't start looking at beginning of array
+console.log(
+  courses.find(function (course) {
+    return course.name === "xyz";
+  })
+); // undefined
+
+console.log(
+  courses.findIndex(function (course) {
+    return course.name === "a";
+  })
+); // 0
+
+console.log(
+  courses.findIndex(function (course) {
+    return course.name === "xyz";
+  })
+); // -1
