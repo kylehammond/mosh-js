@@ -1,15 +1,33 @@
-const now = new Date();
-const date1 = new Date('May 11 2018 09:00');
-const date2 = new Date(2022,0,18,9,0); // 0 for jan
+// make a new object
+// street
+// city
+// zipCode
+// showAddress(address) show all properties and their value
 
-console.log(now);
-console.log(date1);
-console.log(date2);
+// my solution
+let address = {
+  street: '123 Sesame Street',
+  city: 'Bumfeck',
+  state: 'WY',
+  zipCode: '54321',
+  showAddress() {
+      console.log(
+      `${this.street} ${this.city}, ${this.state} ${this.zipCode}`);
+  }
+}
 
-now.setFullYear(2017);
-console.log(now);
+address.showAddress();
 
-console.log(now.toDateString()); // Sun Jul 02 2017
-console.log(now.toTimeString()); // 11:14:39 GMT-0500 (Central Daylight Time)
-console.log(now.toISOString()); // commonly used on back ends
+// his solution
+let address2 = {
+  street: 'a',
+  city: 'b',
+  zipCode: 'c'
+}
 
+function showAddress(address2) {
+  for (let key in address2)
+    console.log(key, address2[key]);
+}
+
+showAddress(address2);
