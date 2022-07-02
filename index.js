@@ -1,33 +1,25 @@
-// write a function like includes method - implement yourself
+// new function 'except' returns a new array without the values provided
 const numbers = [1, 2, 3, 4];
-// console.log(numbers.includes(1));
 
-// my solution 1
-// function includes(array, searchElement) {
-//   return array.some((n) => n === searchElement);
-// }
+// my solution
+function except(numbers, excluded) {
+  let newNumbers = [];
+  for (const num of numbers) if (!excluded.includes(num)) newNumbers.push(num);
+  return newNumbers;
+}
 
-// console.log(includes(numbers, 2));
-// console.log(includes(numbers, 8));
-
-// function includes(array, searchElement) {
-//   for (let item of array) {
-//     if (item === searchElement) return true;
-//   }
-//   return false;
-// }
-
-// console.log(includes(numbers, 2));
-// console.log(includes(numbers, 8));
+output = except(numbers, [1, 2]); // should be 3, 4
+console.log(output);
 
 // his solution
 
-// pretty much same
-
-function includes(array, searchElement) {
-  for (let element of array) if (element === searchElement) return true;
-  return false;
+// basically same
+function except2(array, excluded) {
+  const output = [];
+  for (let element of array)
+    if (!excluded.includes(element)) output.push(element);
+  return output;
 }
 
-console.log(includes(numbers, 2));
-console.log(includes(numbers, -1));
+output = except2(numbers, [1, 2]); // should be 3, 4
+console.log(output);
