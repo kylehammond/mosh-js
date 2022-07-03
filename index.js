@@ -1,67 +1,27 @@
-// {
-//   const message = "hi";
-// }
-// console.log(message); // message not available in scope (outside of the code block)
-
-// // scope limited to block in which defined
+// // let x = 0;
+// // var y = 0;  // to be avoided
 
 // function start() {
-//   const message = "hi";
-//   if (true) {
-//     const another = "bye";
+//   for (var i = 0; i < 5; i++) {
+//     if (true) {
+//       let color = "red";
+//     }
 //   }
 
-//   return another;
-// }
-// // console.log(message); // message not available in scope (outside of the code block)
-// start(); //another not defined
-// // scope limited to block in which defined
-
-// function start() {
-//   const message = "hi";
-//   if (true) {
-//     const another = "bye";
-//   }
-//   for (let i = 0; i < 5; i++) {
-//     console.log(i);
-//   }
-//   console.log(i); // not in scope
-//   return another;
-// }
-// // console.log(message); // message not available in scope (outside of the code block)
-// start(); //another not defined
-// // scope limited to block in which defined
-
-// function start() {
-//   const message = "hi";
-// }
-// function stop() {
-//   const message = "bye";
-// }
-
-// start(); // all good because message defined in two different scopes
-
-// const color = "red"; // accessible in all functions
-
-// function start() {
-//   const message = "hi";
 //   console.log(color);
+//   // console.log(i); // with let, i not defined
+//   // with var, i is accessible still ... scoped to FUNCTION
+
+//   // before ES6, var only way
+//   // ES6 + - let, const => block scoped
 // }
-// function stop() {
-//   const message = "bye";
-// }
 
-// start(); // all good because message defined in two different scopes
+// start();
 
-const color = "red"; // accessible in all functions - should be avoided
+var color = "red"; // global variable in WINDOW object
+let age = 30; // global variable NOT attached in WINDOW object
 
-function start() {
-  const message = "hi";
-  const color = "blue"; // blue takes precedence
-  console.log(color);
+// globally in WINDOW .. will eventually encapsulate in modules
+function sayHi() {
+  console.log("hi");
 }
-function stop() {
-  const message = "bye";
-}
-
-start(); // all good because message defined in two different scopes
