@@ -1,27 +1,45 @@
-// // let x = 0;
-// // var y = 0;  // to be avoided
+// this - references the object that is executing the current function
 
-// function start() {
-//   for (var i = 0; i < 5; i++) {
-//     if (true) {
-//       let color = "red";
-//     }
-//   }
+// if this -> refs that
+// method -> obj
+// function -> global (window)
 
-//   console.log(color);
-//   // console.log(i); // with let, i not defined
-//   // with var, i is accessible still ... scoped to FUNCTION
+const video = {
+  title: "a",
+  tags: ["a", "b", "c"],
+  // showTags() {
+  //   this.tags.forEach((tag) => console.log(this, tag)); // this function is an anon callback and points to Window!!
+  // },
+  showTags() {
+    this.tags.forEach((tag) => console.log(this, tag), this); // this puts you in the context of the video again.  not all methods in JS allow passing in this context.
+  },
+  // method (because in obj, this references this obj)
+  play() {
+    console.log(this);
+  },
+};
 
-//   // before ES6, var only way
-//   // ES6 + - let, const => block scoped
-// }
+// // method - references video
+// video.stop = function () {
+//   console.log(this);
+// };
 
-// start();
+video.play();
+// video.stop();
 
-var color = "red"; // global variable in WINDOW object
-let age = 30; // global variable NOT attached in WINDOW object
+// functions reference Window
 
-// globally in WINDOW .. will eventually encapsulate in modules
-function sayHi() {
-  console.log("hi");
+function playVideo() {
+  console.log(this);
 }
+playVideo(); // logs Window object
+
+function Video(title) {
+  this.title = title;
+  console.log(this);
+}
+
+const v = new Video("a"); // logs Video object
+
+video.showTags();
+// a  b  c  listed
