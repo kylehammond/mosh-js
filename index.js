@@ -1,5 +1,17 @@
-//This training is complete.
+// 4 pillars of OOP
 
-// I did each section as a commit to the main file to keep following along with the videos simpler.  To see each lesson you need to look at the new version of the code for each commit.
+// encapsulation
+// group related variables and functions together
+// benefits: reduce complexity, increase reusability
 
-// I will move on to the next lesson now which is a new course about OOP in JS
+// abstraction
+// hide details and complexity and only show essential
+// benefits: reduce complexity + isolate impact of changes
+
+// inheritance
+// allow objects to inherit properties or methods from others
+// benefits:  eliminate redundant code
+
+// polymorphism
+// allow overlap of functionality and properties
+// benefits: refactor ugly switch/case/control flow logic
