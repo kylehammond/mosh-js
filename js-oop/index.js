@@ -1,27 +1,31 @@
-// constructor function
-function Circle(radius) {
-  this.radius = radius;
-  this.draw = function () {
-    console.log("draw");
-  };
+let x = 10;
+let y = x;
+
+x = 20;
+
+console.log(y); //10 - points to original x reference in memory
+
+let x = { value: 10 };
+let y = x;
+
+x.value = 20;
+
+console.log(y); //{value: 20} - points to currently referenced memory
+
+let number = 10;
+
+function increase(number) {
+  number++;
 }
 
-Circle.call({}, 1);
-Circle.apply({}, [1, 2, 3]);
+increase(number);
+console.log(number); // 10 - you increased it only local to the increase method
 
-const circle = new Circle(1);
-circle.draw();
+let obj = { value: 10 };
 
-console.log(Circle.name);
-console.log(Circle.length);
-console.log(Circle.constructor);
+function increase(obj) {
+  obj.value++;
+}
 
-// another way to make a function
-
-// const Circle1 = new Function(
-//   "radius",
-//   `this.radius = radius;
-// this.draw = function () {
-//   console.log("draw");
-// }`
-// );
+increase(obj);
+console.log(obj.value); // 11 - you increased the obj that was passed by ref
