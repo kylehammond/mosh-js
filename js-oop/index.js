@@ -1,9 +1,11 @@
-const circle = {
-  radius: 1,
-  location: { x: 5, y: 9 },
-  draw: function () {
-    console.log("draw");
-  },
-};
+function createCircle(radius) {
+  return {
+    radius,
+    draw: function () {
+      console.log("draw");
+    },
+  };
+}
 
+const circle = createCircle(1);
 circle.draw();
