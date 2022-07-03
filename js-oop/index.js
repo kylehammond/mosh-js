@@ -3,16 +3,22 @@ function Circle(radius) {
 
   let defaultLocation = { x: 0, y: 0 };
 
-  let computeOptimumLocation = function (factor) {};
-
   this.draw = function () {
-    computeOptimumLocation(0.1);
-
     console.log("draw");
   };
+
+  Object.defineProperty(this, "defaultLocation", {
+    get: function () {
+      return defaultLocation;
+    },
+    set: function (value) {
+      if (!value.x || !value.y) throw new Error("Invalid location");
+
+      defaultLocation = value;
+    },
+  });
 }
 
 const circle = new Circle(10);
-
-// closure:  when a function is in a function - it can access items in the inner function and its parent function
-// closure is of the child function - things in closure (only the parent things) will stay in memory unlike the scope (child things)
+circle.defaultLocation = { x: 1, y: 1 };
+circle.defaultLocation = 1; //invalid location
