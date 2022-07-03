@@ -1,15 +1,24 @@
-// Function Declaration
-walk(); // can call before defined
+// function sum(a, b) {
+//   // console.log(arguments); // returns a new object of parameters
+//   return a + b;
+// }
 
-function walk() {
-  console.log("walk");
-} // will be HOISTED by the javascript engine -
-// will be moved to top of script
+// console.log(sum(1, 2)); // 3
+// console.log(sum(1)); // NaN - not a number  ( 1 + undefined )
 
-// Function Expression
-run(); // can NOT call before defined - Uncaught ReferenceError: can't access lexical declaration 'run' before initialization
-// just like how you can't use a var before its defined
+// console.log(sum(1, 2, 3, 4, 5)); // 3
+// // how would we do this?
 
-let run = function () {
-  console.log("run");
-};
+function sum() {
+  let total = 0;
+  for (let value of arguments) {
+    total += value;
+  }
+  return total;
+}
+
+console.log(sum(1, 2)); // 3
+console.log(sum(1)); // NaN - not a number  ( 1 + undefined )
+
+console.log(sum(1, 2, 3, 4, 5)); // 3
+// how would we do this?
