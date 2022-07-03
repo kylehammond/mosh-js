@@ -1,16 +1,3 @@
-// factory function
-function createCircle(radius) {
-  return {
-    radius,
-    draw: function () {
-      console.log("draw");
-    },
-  };
-}
-
-const factoryCircle = createCircle(1);
-factoryCircle.draw();
-
 // constructor function
 function Circle(radius) {
   this.radius = radius;
@@ -19,10 +6,22 @@ function Circle(radius) {
   };
 }
 
-const constructorCircle = new Circle(1);
-constructorCircle.draw();
+Circle.call({}, 1);
+Circle.apply({}, [1, 2, 3]);
 
-console.log("factory constructor", factoryCircle.constructor);
-console.log("constructor constructor", constructorCircle.constructor);
+const circle = new Circle(1);
+circle.draw();
 
-// every object has a constructor property - referencing the constructor that was used to create the object
+console.log(Circle.name);
+console.log(Circle.length);
+console.log(Circle.constructor);
+
+// another way to make a function
+
+// const Circle1 = new Function(
+//   "radius",
+//   `this.radius = radius;
+// this.draw = function () {
+//   console.log("draw");
+// }`
+// );
