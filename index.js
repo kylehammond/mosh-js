@@ -1,43 +1,51 @@
-// this - references the object that is executing the current function
+// create a function 'sum' taking varying # of arguments and returns their sum
+// 1 + args
+// 1, 2, 3, 4 => 10
+// challenge - modify to take an array and still return same thing
+// Array.isArray() - true/false
 
-// if this -> refs that
-// method -> obj
-// function -> global (window)
-
-const video = {
-  title: "a",
-  tags: ["a", "b", "c"],
-  showTags() {
-    // non preferred approach
-    // const self = this; // some use 'that'
-    // this.tags.forEach(function (tag) {
-    //   return console.log(self.title, tag);
-    // }); // this puts you in the context of the video again.  not all methods in JS allow passing in this context.
-
-    // second solution
-    // this.tags.forEach(
-    //   function (tag) {
-    //     console.log(this.title, tag);
-    //   }.bind(this)
-    // ); // this puts you in the context of the video again.  not all methods in JS allow passing in this context.
-
-    // new ES6 preffered way
-    this.tags.forEach((tag) => console.log(this.title, tag)); // always points to what you used
-  },
-  play() {
-    console.log(this);
-  },
-};
-
-video.showTags();
-
-// function playVideo(a, b) {
-//   console.log(this);
+// // my solution without array
+// function sum(...numbers) {
+//   return numbers.reduce((previous, current) => {
+//     return previous + current;
+//   });
 // }
 
-// playVideo.call({ name: "Mosh" }, 1, 2); // ref specified obj
-// playVideo.apply({ name: "Mosh" }, [1, 2]); // ref specified obj
-// playVideo.bind({ name: "Mosh" })(); // gives you back new function pointing to your obj
-// // () at the end calls it .. just like .call()
+// console.log(sum(1, 2, 3, 4));
+// console.log(sum([1, 2, 3, 4]));
 
-// playVideo(); // ref Window
+// // my solution with array
+// function sum(numbers) {
+//   let numbersCopy = [];
+
+//   if (Array.isArray(numbers)) {
+//     numbersCopy = numbers;
+//   } else {
+//     for (let number of arguments) numbersCopy.push(Number(number));
+//   }
+
+//   return numbersCopy.reduce((previous, current) => {
+//     return previous + current;
+//   });
+// }
+
+// console.log(sum([1, 2, 3, 4]));
+// console.log(sum(1, 2, 3, 4));
+
+// // his solution without array
+// function sum(...items) {
+//   return items.reduce((a, b) => a + b);
+// }
+
+// console.log(sum(1, 2, 3, 4));
+
+// his solution with array
+// this all hinged on the fact that ... rest operator returns an array no matter what - but the first item was our test array of [1,2,3,4].
+//  Also, you can spread into the current list to flatten.
+function sum(...items) {
+  if (items.length === 1 && Array.isArray(items[0])) items = [...items[0]];
+  return items.reduce((a, b) => a + b);
+}
+
+console.log(sum([1, 2, 3, 4]));
+console.log(sum(1, 2, 3, 4));
