@@ -1,24 +1,67 @@
-const person = {
-  firstName: "Mosh",
-  lastName: "Hamedani",
-  set fullName(value) {
-    if (typeof value !== "string") throw new Error("Value is not a string.");
+// {
+//   const message = "hi";
+// }
+// console.log(message); // message not available in scope (outside of the code block)
 
-    const nameParts = value.split(" ");
-    if (nameParts.length !== 2) throw new Error("Enter a first and last name.");
+// // scope limited to block in which defined
 
-    this.firstName = nameParts[0];
-    this.lastName = nameParts[1];
-  },
-};
+// function start() {
+//   const message = "hi";
+//   if (true) {
+//     const another = "bye";
+//   }
 
-try {
-  person.fullName = "";
-} catch (error) {
-  alert(error);
+//   return another;
+// }
+// // console.log(message); // message not available in scope (outside of the code block)
+// start(); //another not defined
+// // scope limited to block in which defined
+
+// function start() {
+//   const message = "hi";
+//   if (true) {
+//     const another = "bye";
+//   }
+//   for (let i = 0; i < 5; i++) {
+//     console.log(i);
+//   }
+//   console.log(i); // not in scope
+//   return another;
+// }
+// // console.log(message); // message not available in scope (outside of the code block)
+// start(); //another not defined
+// // scope limited to block in which defined
+
+// function start() {
+//   const message = "hi";
+// }
+// function stop() {
+//   const message = "bye";
+// }
+
+// start(); // all good because message defined in two different scopes
+
+// const color = "red"; // accessible in all functions
+
+// function start() {
+//   const message = "hi";
+//   console.log(color);
+// }
+// function stop() {
+//   const message = "bye";
+// }
+
+// start(); // all good because message defined in two different scopes
+
+const color = "red"; // accessible in all functions - should be avoided
+
+function start() {
+  const message = "hi";
+  const color = "blue"; // blue takes precedence
+  console.log(color);
+}
+function stop() {
+  const message = "bye";
 }
 
-console.log(person);
-
-// const e = new Error(); // can do - but just an object
-// throw e; // now it is an exception
+start(); // all good because message defined in two different scopes
