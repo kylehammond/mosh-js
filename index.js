@@ -1,51 +1,31 @@
-// create a function 'sum' taking varying # of arguments and returns their sum
-// 1 + args
-// 1, 2, 3, 4 => 10
-// challenge - modify to take an array and still return same thing
-// Array.isArray() - true/false
+// write a circle object using object literal syntax including radius that you can read/write  and an area property that is read only
 
-// // my solution without array
-// function sum(...numbers) {
-//   return numbers.reduce((previous, current) => {
-//     return previous + current;
-//   });
-// }
+// my solution
+let circle = {
+  radius: 0,
+  area: 0,
+  get area() {
+    return Math.pow(Math.PI * this.radius, 2);
+  },
+};
 
-// console.log(sum(1, 2, 3, 4));
-// console.log(sum([1, 2, 3, 4]));
+console.log(circle.radius); //gets init value
+circle.radius = 2; // write works
+console.log(circle.radius); // gets updated value
+console.log(circle.area); // gets calculated value
+circle.area = 50000; // no change
+console.log(circle.area); // still gets calculated value
 
-// // my solution with array
-// function sum(numbers) {
-//   let numbersCopy = [];
+// his solution
 
-//   if (Array.isArray(numbers)) {
-//     numbersCopy = numbers;
-//   } else {
-//     for (let number of arguments) numbersCopy.push(Number(number));
-//   }
+const circle1 = {
+  radius: 1,
+  get area() {
+    return Math.PI * this.radius * this.radius;
+  },
+};
 
-//   return numbersCopy.reduce((previous, current) => {
-//     return previous + current;
-//   });
-// }
-
-// console.log(sum([1, 2, 3, 4]));
-// console.log(sum(1, 2, 3, 4));
-
-// // his solution without array
-// function sum(...items) {
-//   return items.reduce((a, b) => a + b);
-// }
-
-// console.log(sum(1, 2, 3, 4));
-
-// his solution with array
-// this all hinged on the fact that ... rest operator returns an array no matter what - but the first item was our test array of [1,2,3,4].
-//  Also, you can spread into the current list to flatten.
-function sum(...items) {
-  if (items.length === 1 && Array.isArray(items[0])) items = [...items[0]];
-  return items.reduce((a, b) => a + b);
-}
-
-console.log(sum([1, 2, 3, 4]));
-console.log(sum(1, 2, 3, 4));
+circle.radius = 2;
+console.log(circle.area);
+console.area = 20;
+console.log(circle.area);
