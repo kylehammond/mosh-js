@@ -1,31 +1,23 @@
-let x = 10;
-let y = x;
-
-x = 20;
-
-console.log(y); //10 - points to original x reference in memory
-
-let x = { value: 10 };
-let y = x;
-
-x.value = 20;
-
-console.log(y); //{value: 20} - points to currently referenced memory
-
-let number = 10;
-
-function increase(number) {
-  number++;
+function Circle(radius) {
+  this.radius = radius;
+  this.draw = function () {
+    console.log("draw");
+  };
 }
 
-increase(number);
-console.log(number); // 10 - you increased it only local to the increase method
+const circle = new Circle(10);
+circle.location = { x: 1 }; //same
+circle["location"] = { x: 1 }; //same, but useful for dynamically accessing property name
 
-let obj = { value: 10 };
+const propertyName = "location";
+console.log(circle[propertyName]); // dynamic access
 
-function increase(obj) {
-  obj.value++;
-}
+// can also use for properties with bad names
+const otherPropertyWithBadChars = "center-location property";
 
-increase(obj);
-console.log(obj.value); // 11 - you increased the obj that was passed by ref
+// you can remove properties that you don't want sent to the client such as password, etc
+delete circle.location;
+delete circle[otherPropertyWithBadChars];
+
+// ex of use:
+// user.token = 'sadfasdf';
