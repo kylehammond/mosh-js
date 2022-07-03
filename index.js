@@ -1,11 +1,22 @@
-//rest operator
-function sum(discount, ...prices) {
-  // console.log(args); // array of args - if you didn't have ... it would just show "1"
-  const total = prices.reduce((a, b) => a + b);
-  return total * (1 - discount);
+// without default params
+
+// function interest(principal, rate, years) {
+//   rate = rate || 3.5; // if rate truthy use it, otherwise 3.5
+//   years = years || 5;
+
+//   return ((principal * rate) / 100) * years;
+// }
+
+// console.log(interest(10000, 3.5, 5));
+// console.log(interest(10000));
+
+// with default params (must be last params)
+
+function interest(principal, rate = 3.5, years = 5) {
+  return ((principal * rate) / 100) * years;
 }
 
-console.log(sum(0.1, 20, 30));
-
-// rest param must be last formal parameter
-// the "rest" of the args
+console.log(interest(10000, 3.5, 5));
+console.log(interest(10000));
+console.log(interest(10000, undefined, 5)); // ugly workaround, must look at function to understand
+// same result
