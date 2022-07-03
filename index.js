@@ -1,31 +1,31 @@
-// write a circle object using object literal syntax including radius that you can read/write  and an area property that is read only
+// refactor this to return error if first param is not valid array
+// Error ""
+// wrap calling code in try catch and log ex on the console
+
+const numbers = [1, 2, 3, 4, 1, 8, 2, 0, -4];
 
 // my solution
-let circle = {
-  radius: 0,
-  area: 0,
-  get area() {
-    return Math.pow(Math.PI * this.radius, 2);
-  },
-};
+function countOccurences(array, searchElement) {
+  if (!Array.isArray(array)) throw new Error("First parameter must be array.");
 
-console.log(circle.radius); //gets init value
-circle.radius = 2; // write works
-console.log(circle.radius); // gets updated value
-console.log(circle.area); // gets calculated value
-circle.area = 50000; // no change
-console.log(circle.area); // still gets calculated value
+  return array.reduce((accumulator, current) => {
+    const occurence = current === searchElement ? 1 : 0;
+    return accumulator + occurence;
+  }, 0);
+}
+
+try {
+  let count = [];
+
+  count = countOccurences(numbers, 1);
+  console.log(count);
+  count = countOccurences(numbers, -1);
+  console.log(count);
+  count = countOccurences("peanut", 1);
+  console.log(count);
+} catch (error) {
+  console.log(error);
+}
 
 // his solution
-
-const circle1 = {
-  radius: 1,
-  get area() {
-    return Math.PI * this.radius * this.radius;
-  },
-};
-
-circle.radius = 2;
-console.log(circle.area);
-console.area = 20;
-console.log(circle.area);
+// pretty much the same
