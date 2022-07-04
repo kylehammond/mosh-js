@@ -15,11 +15,35 @@ extend(Circle, Shape);
 
 // must be AFTER superclass method
 Circle.prototype.duplicate = function () {
-  Shape.prototype.duplicate.call(this); // call superclass/base method first
-
   console.log("duplicate circle");
 };
 
-const c = new Circle();
+function Square() {}
+extend(Square, Shape);
 
-console.log(c);
+Square.prototype.duplicate = function () {
+  console.log("duplicate square");
+};
+
+const shapes = [new Circle(), new Square()];
+
+for (let shape of shapes) shape.duplicate(); // will call the proper implementation depending on object type
+
+// // the old, non-polymorphism way
+// for (let shape of shapes)
+// {
+//   if (shape.type === 'circle'){
+//     duplicateCircle();
+//   }
+//   else if (shape.type === 'square'){
+//     duplicateSquare(); //standalone functions not part of object
+//   }
+//   else
+//     duplicateShape();
+// }
+
+// const c = new Circle();
+// const sq = new Square();
+
+// console.log(c);
+// console.log(sq);
