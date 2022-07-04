@@ -1,29 +1,15 @@
-let person = { name: "Mosh" };
+// Object.getPrototypeOf(myObj);
 
-// console.log(person);
-// console.log(person.toString()); // works
+// myObj.__proto__ (parent of myObj)
+// Constructor.prototype () -> parent of myObj from above
 
-// for (let key in person) console.log(key); // no toString or other things from Object base
+function Circle(radius) {
+  this.radius = radius;
+}
 
-// let objectBase = Object.getPrototypeOf(person);
+console.log(Circle.prototype);
 
-// console.log(Object.getOwnPropertyDescriptor(objectBase, "toString"));
-// //Object { value: toString(), writable: true, enumerable: false, configurable: true }
+const circle = new Circle(1);
 
-// // enumerable: false means we can't loop over
-
-Object.defineProperty(person, "name", {
-  // get: function(){}
-  // set: function(){}
-  writable: false,
-  enumerable: false,
-  configurable: false,
-});
-
-person.name = "John";
-
-console.log(person.name); //Mosh - not changed
-for (let key in person) console.log(key); // nothing, because only prop is not enumerable
-
-delete person.name; // nothing happens, not configurable
-console.log(person.name); //Mosh - not changed
+let obj = {};
+console.log(Object.prototype);
