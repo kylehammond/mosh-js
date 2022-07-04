@@ -1,42 +1,23 @@
-// function Circle(radius) {
-//   this.radius = radius;
-
-//   this.draw(log("draw"));
-// }
-
-// const c1 = new Circle(1);
-// const c2 = new Circle(1);
-
-// console.log(c1);
-// console.log(c2);
-// // now there exists many copies of the same function draw
-
 function Circle(radius) {
-  // instance members
+  // Instance members
   this.radius = radius;
+
   this.move = function () {
-    this.draw(); // js engine will find this on the prototype
     console.log("move");
   };
 }
 
 const c1 = new Circle(1);
-const c2 = new Circle(1);
 
-//prototype members
+// Prototype members
+// could be done on any line
 Circle.prototype.draw = function () {
-  // this.move();
   console.log("draw");
-}; // this moves
-
-Circle.prototype.toString = function () {
-  return "Circle with radius " + this.radius;
 };
 
-console.log(c1.toString()); //Circle with radius 1
-// console.log(c1.draw()); // move  draw (with move in draw())
-console.log(c1.move()); // draw  move (with draw in move())
+console.log(Object.keys(c1)); // instance/"own" members
 
-console.log(c1);
-console.log(c2);
-// now there no draw function on the c1 or c2, it's in the prototype
+for (let key in c1) console.log(key); // instance/"own" and prototype members
+
+console.log(c1.hasOwnProperty("radius")); // true
+console.log(c1.hasOwnProperty("draw")); // false b/c proto
