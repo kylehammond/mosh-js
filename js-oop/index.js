@@ -1,38 +1,52 @@
-function mixin(target, ...sources) {
-  Object.assign(target, ...sources); // spread, not rest
+//create two objects
+//HtmlElement
+//HtmlSelectElement (drop down list)
+// prototypical inheritance between them
+// should have methods:
+
+// HtmlElement
+// click: function
+// focus: function //prototype
+
+// HtmlSelectElement
+// takes items array
+// has addItem, removeItem
+
+// do not use extend - if you set your prototype to the prototype of the parent you won't get the instance methods click (you would get focus though)
+
+// my solution
+function HtmlElement() {
+  this.click = function () {
+    console.log("clicked");
+  };
 }
 
-const canEat = {
-  eat: function () {
-    this.hunger--;
-    console.log("eating");
-  },
+HtmlElement.prototype.focus = function () {
+  console.log("focused");
 };
 
-const canWalk = {
-  walk: function () {
-    console.log("walking");
-  },
-};
+function HtmlSelectElement(items) {
+  this.items = items === undefined ? [] : items;
+  this.addItem = function (item) {
+    items.push(item);
+  };
+  this.removeItem = function (item) {
+    items.splice(items.indexOf("2"), 1);
+  };
+}
 
-const canSwim = {
-  swim: function () {
-    console.log("swimming");
-  },
-};
+HtmlSelectElement.prototype = new HtmlElement();
 
-//mixins
-function Person() {}
+const e = new HtmlElement();
+const se = new HtmlSelectElement(["1", "2"]);
 
-mixin(Person.prototype, canEat, canWalk); // copy props and objs from one to another
+e.click();
+e.focus();
 
-const person = new Person();
-console.log(person.eat());
-console.log(person.walk());
-
-function Goldfish() {}
-mixin(Goldfish.prototype, canEat, canSwim);
-
-const goldfish = new Goldfish();
-console.log(goldfish.eat());
-console.log(goldfish.swim());
+console.log(se.items);
+se.addItem("3");
+console.log(se.items);
+se.removeItem("2");
+console.log(se.items);
+se.click();
+se.focus();
