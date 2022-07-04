@@ -1,11 +1,8 @@
-// Prototype - think "parent"
+let myArray = [];
 
-//.. think 'toString()' belonging to all objects - C# Object
+console.log(myArray);
+// expand to see all methods that all arrays have as part of their prototype like push/slice/reduce
 
-let x = {};
-let y = {};
-//both reference object base / prototype
+// objects created by a given constructor will have the same prototype
 
-console.log(Object.getPrototypeOf(x) === Object.getPrototypeOf(y)); // true
-
-// js engine walks up the prototype chain (child -> parent) until it finds the method you want
+// circle -> Circle -> Object
