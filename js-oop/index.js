@@ -1,58 +1,14 @@
-//create two objects
-//HtmlElement
-//HtmlSelectElement (drop down list)
-// prototypical inheritance between them
-// should have methods:
+// extend htmlselectelement and implement a render() method
+// render an html select/option list
+// create an htmlimageelement that inherits from htmlelement that can be clicked,focused, and renders its own way
+// optionally pass/set a src ... 'http://'
+// render an html img ... img src="http://" />
 
-// HtmlElement
-// click: function
-// focus: function //prototype
+// render should return strings
 
-// HtmlSelectElement
-// takes items array
-// has addItem, removeItem
-
-// do not use extend - if you set your prototype to the prototype of the parent you won't get the instance methods click (you would get focus though)
+// finally, create array of elements of htmlselectelement(1,2,3) and htmlImageElement('http://') and call render on each
 
 // my solution
-// function HtmlElement() {
-//   this.click = function () {
-//     console.log("clicked");
-//   };
-// }
-
-// HtmlElement.prototype.focus = function () {
-//   console.log("focused");
-// };
-
-// function HtmlSelectElement(items) {
-//   this.items = items === undefined ? [] : items;
-//   this.addItem = function (item) {
-//     items.push(item);
-//   };
-//   this.removeItem = function (item) {
-//     items.splice(items.indexOf("2"), 1);
-//   };
-// }
-
-// HtmlSelectElement.prototype = new HtmlElement();
-
-// const e = new HtmlElement();
-// const se = new HtmlSelectElement(["1", "2"]);
-
-// e.click();
-// e.focus();
-
-// console.log(se.items);
-// se.addItem("3");
-// console.log(se.items);
-// se.removeItem("2");
-// console.log(se.items);
-// se.click();
-// se.focus();
-
-// his solution
-// almost the same!!
 function HtmlElement() {
   this.click = function () {
     console.log("clicked");
@@ -71,21 +27,42 @@ function HtmlSelectElement(items = []) {
   this.removeItem = function (item) {
     this.items.splice(this.items.indexOf("2"), 1);
   };
+  this.render = function () {
+    const html = `
+<select>
+  ${this.items.map((i) => `<option>${i}</option>`).join(`
+  `)}
+</select>`;
+    return html;
+  };
 }
 
 HtmlSelectElement.prototype = new HtmlElement();
 HtmlSelectElement.prototype.constructor = HtmlSelectElement;
 
+function HtmlImageElement(src) {
+  this.src = src;
+  this.render = function () {
+    return `<img src='${src} />`;
+  };
+}
+
+HtmlImageElement.prototype = new HtmlElement();
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
 const e = new HtmlElement();
-const se = new HtmlSelectElement(["1", "2"]);
+const se = new HtmlSelectElement(["1", "2", "3"]);
+const i = new HtmlImageElement("http://www.goobles.com");
 
-e.click();
-e.focus();
+const elements = [
+  new HtmlSelectElement(["1", "2", "3"]),
+  new HtmlImageElement("http://www.goobles.com"),
+];
 
-console.log(se.items);
-se.addItem("3");
-console.log(se.items);
-se.removeItem("2");
-console.log(se.items);
-se.click();
-se.focus();
+for (let element of elements) {
+  console.log(element.render());
+  // element.click();
+  // element.focus();
+}
+
+// his solution
