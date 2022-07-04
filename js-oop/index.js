@@ -6,25 +6,33 @@ Shape.prototype.duplicate = function () {
   console.log("duplicate");
 };
 
+// intermediate function inheritance
+function extend(Child, Parent) {
+  Child.prototype = Object.create(Parent.prototype);
+  Child.prototype.constructor = Child;
+}
+
 function Circle(radius, color) {
-  // Shape(color); // doesn't work because 'this' is pointing to Window global object
   Shape.call(this, color);
   this.radius = radius;
 }
 
-Circle.prototype = Object.create(Shape.prototype);
-Circle.prototype.constructor = Circle; // best practice so you don't lose the original constructor
+extend(Circle, Shape); // extend circle with shape
 
 Circle.prototype.draw = function () {
   console.log("draw");
 };
 
-const s = new Shape();
+function Square(size) {
+  this.size = size;
+}
+
+extend(Square, Shape); // extend circle with shape
+
+const s = new Shape("green");
 const c = new Circle(1, "red");
+const sq = new Square(10);
 
+console.log(s);
 console.log(c);
-
-// (without inheritance)
-// equivalent ways to construct a new Circle object
-// new Circle(1)
-// Circle.prototype.constructor(1)
+console.log(sq);
