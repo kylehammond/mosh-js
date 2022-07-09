@@ -1,29 +1,30 @@
-const _radius = new WeakMap(); //essentially dict where keys are obj and vals can be anything .. if keys are not used they will be GC'd (weak)
-const _move = new WeakMap();
-
-// you could put all of this in ONE weakmap but it may be hard to call
-
+const _radius = new WeakMap();
 class Circle {
   constructor(radius) {
     _radius.set(this, radius);
-
-    // returns move undefined
-    // the 'this' part returns as undefined because it's by default strict
-    // _move.set(this, function () {
-    //   console.log("move", this);
-    // });
-    // returns this correctly as Circle
-    _move.set(this, () => {
-      console.log("move", this);
-    });
   }
 
-  draw() {
-    console.log(_radius.get(this));
-    _move.get(this)(); // () at the end is because it returns a function, then you call with ()
+  // getRadius() {
+  //   return _radius.get(this);
+  // }
+
+  // doesn't have to be this way
+  // Object.defineProperty(this, 'radius', {
+  //   get...
+  // })
+
+  get radius() {
+    return _radius.get(this);
+  }
+
+  set radius(value) {
+    if (value <= 0) throw new Error("invalid radius");
+    _radius.set(this, value);
   }
 }
 
 const c = new Circle(1);
-console.log(c);
-c.draw(); // gets you 1
+// console.log(c.getRadius());  // ok.. but would rather read like c.radius
+console.log(c.radius); // nice
+c.radius = 3;
+console.log(c.radius); // 3, new value
