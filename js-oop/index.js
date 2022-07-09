@@ -1,19 +1,23 @@
-// a refresher
+class Circle {
+  constructor(radius) {
+    this.radius = radius;
+  }
 
-sayHello(); // valid to call before written because it is hoisted to top
-sayGoodbye(); // 'sayGoodbye is not defined' - just like a variable
+  // instance method
+  draw() {}
 
-// function declaration  (hoisted)
-function sayHello() {}
+  // static method
+  static parse(str) {
+    const radius = JSON.parse(str).radius;
+    return new Circle(radius);
+  }
+}
 
-// function expression (not hoisted)
-const sayGoodbye = function () {};
+const circle = new Circle(1);
+console.log(circle); // circle.parse will not be available on circle
+// Circle.parse(); // accessible here
 
-// class declaration
-const c = new Circle(); // 'Circle is not defined'  - classes are not hoisted
+const circle2 = Circle.parse('{ "radius": 1 }');
+console.log(circle2);
 
-// most people will use this syntax
-class Circle {}
-
-// class expression
-const Square = class {};
+// Math class is an example of something with lots of static methods called like Math.log
