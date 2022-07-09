@@ -1,27 +1,29 @@
-const _radius = Symbol(); // a unique identifier - new one every time called - NOT a constructor method
-const _draw = Symbol();
+const _radius = new WeakMap(); //essentially dict where keys are obj and vals can be anything .. if keys are not used they will be GC'd (weak)
+const _move = new WeakMap();
+
+// you could put all of this in ONE weakmap but it may be hard to call
+
 class Circle {
   constructor(radius) {
-    // this._radius = radius; // approach 1 - some name things with _ and assume it's private / no one will see it as public
+    _radius.set(this, radius);
 
-    // this.radius = radius;
-    // this['radius'] = radius;
-
-    // using symbols
-    this[_radius] = radius;
+    // returns move undefined
+    // the 'this' part returns as undefined because it's by default strict
+    // _move.set(this, function () {
+    //   console.log("move", this);
+    // });
+    // returns this correctly as Circle
+    _move.set(this, () => {
+      console.log("move", this);
+    });
   }
 
-  // method made with computed property name
-  [_draw]() {}
-
-  // _draw();
+  draw() {
+    console.log(_radius.get(this));
+    _move.get(this)(); // () at the end is because it returns a function, then you call with ()
+  }
 }
 
 const c = new Circle(1);
 console.log(c);
-//c.??? // there's no radius
-
-// don't do this...
-console.log(Object.getOwnPropertyNames(c)); // gets you nothing
-const key = Object.getOwnPropertySymbols(c)[0];
-console.log(c[key]); // hack/workaround to get value of radius.. returns 1
+c.draw(); // gets you 1
