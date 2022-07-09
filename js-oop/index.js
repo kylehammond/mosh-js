@@ -1,30 +1,30 @@
-const _radius = new WeakMap();
-class Circle {
-  constructor(radius) {
-    _radius.set(this, radius);
+class Shape {
+  constructor(color) {
+    this.color = color;
   }
 
-  // getRadius() {
-  //   return _radius.get(this);
-  // }
-
-  // doesn't have to be this way
-  // Object.defineProperty(this, 'radius', {
-  //   get...
-  // })
-
-  get radius() {
-    return _radius.get(this);
-  }
-
-  set radius(value) {
-    if (value <= 0) throw new Error("invalid radius");
-    _radius.set(this, value);
+  move() {
+    console.log("move");
   }
 }
 
-const c = new Circle(1);
-// console.log(c.getRadius());  // ok.. but would rather read like c.radius
-console.log(c.radius); // nice
-c.radius = 3;
-console.log(c.radius); // 3, new value
+class Circle extends Shape {
+  constructor(color, radius) {
+    super(color); // have to call or it will throw exception because you didn't call super's const
+    this.radius = radius;
+  }
+  draw() {
+    console.log("draw");
+  }
+}
+
+const c = new Circle("blue", 1);
+console.log(c);
+// Circle {}
+// [[Prototype]]: Shape
+// constructor: class Circle
+// draw: ƒ draw()
+// [[Prototype]]: Object
+
+c.move();
+c.draw();
