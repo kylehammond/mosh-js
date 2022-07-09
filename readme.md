@@ -1,4 +1,4 @@
-# MOSH JavaScript Training
+# Mosh JavaScript Training
 This repo includes my completed work for both programmingwithmosh.com JavaScript courses.
 
 * JavaScript fundamentals
