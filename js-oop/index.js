@@ -1,41 +1,27 @@
-// const Circle = function () {
-//   this.draw = function () {
-//     console.log(this);
-//   };
-// };
-
-// const c = new Circle();
-// // method call - call method on an object - points to 'c' as this
-// c.draw();
-
-// const draw = c.draw;
-// // function call - call like standalone function not part of an obj - by default, this is Window/Global
-// draw();
-
-// ====================================
-
-// "use strict";
-// const Circle = function () {
-//   this.draw = function () {
-//     console.log(this);
-//   };
-// };
-
-// const c = new Circle();
-// // method call
-// c.draw();
-
-// const draw = c.draw;
-// // function call - with strict will give you undefined
-// draw();
-
-// ====================================
+const _radius = Symbol(); // a unique identifier - new one every time called - NOT a constructor method
+const _draw = Symbol();
 class Circle {
-  draw() {
-    console.log(this);
+  constructor(radius) {
+    // this._radius = radius; // approach 1 - some name things with _ and assume it's private / no one will see it as public
+
+    // this.radius = radius;
+    // this['radius'] = radius;
+
+    // using symbols
+    this[_radius] = radius;
   }
+
+  // method made with computed property name
+  [_draw]() {}
+
+  // _draw();
 }
 
-const c = new Circle();
-const draw = c.draw;
-draw(); // undefined - STRICT by default with ES6 syntax
+const c = new Circle(1);
+console.log(c);
+//c.??? // there's no radius
+
+// don't do this...
+console.log(Object.getOwnPropertyNames(c)); // gets you nothing
+const key = Object.getOwnPropertySymbols(c)[0];
+console.log(c[key]); // hack/workaround to get value of radius.. returns 1
