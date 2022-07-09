@@ -1,31 +1,19 @@
-// old
+// a refresher
 
-// function Circle(radius){
-//   this.radius = radius;
+sayHello(); // valid to call before written because it is hoisted to top
+sayGoodbye(); // 'sayGoodbye is not defined' - just like a variable
 
-//   this.draw = function() {
-//     console.log('draw');
-//   }
-// }
+// function declaration  (hoisted)
+function sayHello() {}
 
-// newer
-class Circle {
-  constructor(radius) {
-    this.radius = radius;
+// function expression (not hoisted)
+const sayGoodbye = function () {};
 
-    this.move = function () {}; // object instance only
-  }
+// class declaration
+const c = new Circle(); // 'Circle is not defined'  - classes are not hoisted
 
-  // part of prototype
-  draw() {
-    console.log("draw");
-  }
-}
+// most people will use this syntax
+class Circle {}
 
-const c = new Circle(1);
-console.log(c.draw());
-
-console.log(typeof Circle); // function   - class is a type of function
-
-//babeljs.io
-//use to convert new JS to old
+// class expression
+const Square = class {};
