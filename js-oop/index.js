@@ -1,14 +1,4 @@
-// const _radius = new WeakMap();
+import { Circle } from "./modules/circle.js";
 
-// class Circle {
-//   constructor(radius) {
-//     _radius.set(this, radius);
-//   }
-
-//   draw() {
-//     console.log("Circle with radius " + _radius.get(this));
-//   }
-// }
-
-// const c = new Circle(10);
-// c.draw();
+const c = new Circle(10);
+c.draw();
