@@ -1,23 +1,41 @@
+// const Circle = function () {
+//   this.draw = function () {
+//     console.log(this);
+//   };
+// };
+
+// const c = new Circle();
+// // method call - call method on an object - points to 'c' as this
+// c.draw();
+
+// const draw = c.draw;
+// // function call - call like standalone function not part of an obj - by default, this is Window/Global
+// draw();
+
+// ====================================
+
+// "use strict";
+// const Circle = function () {
+//   this.draw = function () {
+//     console.log(this);
+//   };
+// };
+
+// const c = new Circle();
+// // method call
+// c.draw();
+
+// const draw = c.draw;
+// // function call - with strict will give you undefined
+// draw();
+
+// ====================================
 class Circle {
-  constructor(radius) {
-    this.radius = radius;
-  }
-
-  // instance method
-  draw() {}
-
-  // static method
-  static parse(str) {
-    const radius = JSON.parse(str).radius;
-    return new Circle(radius);
+  draw() {
+    console.log(this);
   }
 }
 
-const circle = new Circle(1);
-console.log(circle); // circle.parse will not be available on circle
-// Circle.parse(); // accessible here
-
-const circle2 = Circle.parse('{ "radius": 1 }');
-console.log(circle2);
-
-// Math class is an example of something with lots of static methods called like Math.log
+const c = new Circle();
+const draw = c.draw;
+draw(); // undefined - STRICT by default with ES6 syntax
